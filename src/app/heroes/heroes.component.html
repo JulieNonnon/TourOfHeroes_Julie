@@ -1,0 +1,82 @@
+<!-- (PARENT) -->
+
+
+<!-- Injection du composant <app-hero-detail></app-hero-detail> -->
+<!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> on supprime avec la mise en place de la navigation-->
+
+
+
+<!-- LISTE D'HEROS -->
+
+<h2>Liste d'Héros</h2>
+<ul class="heroes">
+
+    <!-- boucle *ngFor pour afficher l'ensemble des héros -->
+    <li *ngFor="let hero of heroes">
+
+        <!-- ajouter un click event binding dans le bouton, et une classe conditionnelle qui s'applique quand le bouton est cliqué -->
+        <!-- NOTE: CE CONTENU PEUT ETRE RETIRE QUAND ON MET EN PLACE LES ROUTERLINK -->
+        <!-- <button [class.selected]="hero === selectedHero" (click)="onSelect(hero)" type="button">
+            <span class="badge" >{{hero.id}}</span>
+            <span class="name">{{hero.name}}</span>
+        </button> -->
+
+        <!-- Ajout du routerLink, identique à celui du dashboard.component.html -->
+        <a routerLink="/detail/{{hero.id}}">
+            <span class="badge">{{hero.id}}</span> {{hero.name}}
+        </a>
+
+        <!-- SUPPRESSION D'UN HERO -->
+
+        <button type="button" class="delete" title="delete hero"
+        (click)="delete(hero)">x</button>
+
+    </li>
+
+
+
+</ul>
+
+
+<!-- AJOUT D'UN NOUVEAU HERO: -->
+<div>
+
+    <label for="new-hero">Renseigner un nouvel Héro: </label>
+    <input id="new-hero" #heroName />
+  
+    <!-- (click) passe la valeur de l'input à add(), puis vide l'input une fois le nom du nouveau héro ajouté -->
+    <button type="button" class="add-button" (click)="add(heroName.value); heroName.value=''">
+      Ajouter un Héro
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- Détails du héro selectionné (déplacés en hero-detail.component.html)
+
+<div *ngIf="selectedHero">
+
+    <h2>{{selectedHero.name | uppercase}} Details</h2>
+
+    <div>id: {{selectedHero.id}}</div>
+
+    <div> -->
+        <!-- Note: ngModel est un directive d'Angular qui permet de lier une propriété d'un composant à un élément de formulaire HTML. 
+            Cela signifie qu'elle permet de synchroniser les données saisies dans un formulaire avec les propriétés de votre composant, et inversement. -->
+        <!-- <label for="hero-name"> Hero name: </label>
+
+        <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name"> -->
+
+        <!-- Note: ne pas oublier d'ajouter dans app.module.ts le module FormsModule pour que ngModel soit reconnu au lancement de l'app -->
+
+    <!-- </div>
+
+</div> -->

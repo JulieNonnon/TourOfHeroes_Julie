@@ -1,0 +1,26 @@
+<!-- Composant Barre de recherche -->
+
+<div id="search-component">
+
+    <label for="search-box">Rechercher un Héro</label>
+    
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+    <!-- Chaque fois que l'utilisateur tape dans la barre de recherche, la méthode search() est appelée avec la valeur renseignée dans la barre de recherche. Le nom recherché devient un Observable qui emet un stream continue de nom recherché. -->
+  
+    <ul class="search-result">
+      
+        <!-- Le *ngFor repète les objets hero. *ngFor boucle sur une liste appelée heroes$, et non heroes.
+        Le $ est une convention qui indique que heroes$ est un Observable, et non un tableau. -->
+        <li *ngFor="let hero of heroes$ | async" > 
+        <!-- *ngFor ne peut rien faire avec un Observable tel quel, il faut lui assigner un pipe suivi de "async" 
+        permet la souscription automatique à un Observabe -->
+        
+            <a routerLink="/detail/{{hero.id}}">
+            {{hero.name}}
+            </a>
+
+      </li>
+
+    </ul>
+
+  </div>

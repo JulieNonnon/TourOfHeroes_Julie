@@ -1,0 +1,11 @@
+<h2>Top Heroes</h2>
+
+<div class="heroes-menu">
+
+    <!-- boucle sur la liste des héros, avec le path paramétré selon l'id préparé dans app.routing.module -->
+  <a *ngFor="let hero of heroes" routerLink="/detail/{{hero.id}}"> {{hero.name}} </a>
+
+</div>
+
+<!-- Ajout d'une barre de recherche sur le tableau de bord / dashboard -->
+<app-hero-search></app-hero-search>

@@ -1,0 +1,39 @@
+<!-- (ENFANT) -->
+
+<!-- NOTE: les éléments des détails du héro sélectionné sont ceux initialement créés en heroes.component.html. 
+On préfère isoler ces élements dans un autre component à part (hero-detail.component.html) pour plus de praticité
+On remplace les "selectedHero" par "hero" -->
+
+
+
+<!-- Détails du héro selectionné -->
+
+<div *ngIf="hero">
+
+    <h2>Détails de {{hero.name | uppercase}} </h2>
+
+    <div><span>id: </span> {{hero.id}}</div>
+
+    <div>
+        <!-- Note: ngModel est un directive d'Angular qui permet de lier une propriété d'un composant à un élément de formulaire HTML. 
+            Cela signifie qu'elle permet de synchroniser les données saisies dans un formulaire avec les propriétés de votre composant, et inversement. -->
+        <label for="hero-name"> Nom du Héro: </label>
+
+        <input id="hero-name" [(ngModel)]="hero.name" placeholder="Nom">
+
+        <!-- Note: ne pas oublier d'ajouter dans app.module.ts le module FormsModule pour que ngModel soit reconnu au lancement de l'app -->
+
+    </div>
+
+    <!-- Retourner à la page précédement consultée -->
+
+    <button type="button" (click)="goBack()"> Retour </button>
+
+    <!-- Conserver nos modifications quand on change de page / retourne en arrière -->
+
+    <button type="button" (click)="save()"> Sauvegarder </button>
+
+
+</div>
+
+
